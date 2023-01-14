@@ -18,8 +18,9 @@ const ETHK = '0xef71ca2ee68f45b9ad6f72fbdb33d707b872315c'
 
 const main = async () => {
     const contractWallet = PriceOracle.connect(wallet);
-    const txHash = await contractWallet.setPriceInner([ETHK], [ethers.utils.parseEther('1525.83')])
-    console.log(txHash);
+    const tx = await contractWallet.setPriceInner([ETHK], [ethers.utils.parseEther('1525.83')])
+    await tx.wait()
+    console.log(tx.hash());
 };
 
 main()
