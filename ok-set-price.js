@@ -14,11 +14,11 @@ const oracleAddress = "0xE22Cb9130Bd80Fc423F201a7F24fAF4E2D63Aa17";
 const PriceOracle = new ethers.Contract(oracleAddress, ERC20_ABI, provider);
 
 
-const ETHK = ''
+const ETHK = '0xef71ca2ee68f45b9ad6f72fbdb33d707b872315c'
 
 const main = async () => {
     const contractWallet = PriceOracle.connect(wallet);
-    const txHash = await contractWallet.setPriceInner([], [])
+    const txHash = await contractWallet.setPriceInner([ETHK], [ethers.utils.parseEther('1525.83')])
     console.log(txHash);
 };
 
